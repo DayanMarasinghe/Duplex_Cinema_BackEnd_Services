@@ -1,0 +1,27 @@
+{
+  "name": "duplex_cinema_backend_services",
+  "version": "1.0.0",
+  "description": "This project contains the REST APIs for the duplex cinema",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DayanMarasinghe/Duplex_Cinema_BackEnd_Services.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DayanMarasinghe/Duplex_Cinema_BackEnd_Services/issues"
+  },
+  "homepage": "https://github.com/DayanMarasinghe/Duplex_Cinema_BackEnd_Services#readme",
+  "dependencies": {
+    "express": "^4.18.0",
+    "mongoose": "^6.3.1"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.0",
+    "nodemon": "^2.0.15"
+  }
+}
