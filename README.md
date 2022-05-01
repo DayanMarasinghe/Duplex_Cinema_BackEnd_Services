@@ -17,4 +17,4 @@ npm install
 ```
 npm run devStart
 ```
-  Navigate to `http://localhost:3000`
+  Navigate to `http://localhost:4000`
