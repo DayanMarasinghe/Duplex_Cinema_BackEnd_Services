@@ -16,10 +16,6 @@ const customerSchema = new mongoose.Schema({
     phone:{
         type: String,
         required: true
-    },
-    cart:{
-        type:Object,
-        required:true
     }
 })
 

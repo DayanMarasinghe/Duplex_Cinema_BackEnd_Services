@@ -7,8 +7,7 @@ router.post('/',async(req,res) => {
         username: req.body.username,
         password: req.body.password,
         email: req.body.email,
-        phone: req.body.phone,
-        cart: req.body.cart
+        phone: req.body.phone
     })
 
     try{
