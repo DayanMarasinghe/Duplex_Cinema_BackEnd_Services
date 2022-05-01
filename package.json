@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/DayanMarasinghe/Duplex_Cinema_BackEnd_Services#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.0",
     "mongoose": "^6.3.1"
   },
