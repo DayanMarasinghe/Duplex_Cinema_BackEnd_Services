@@ -34,6 +34,8 @@ app.use('/movieshowtimes', movieShowtimesRouter)
 const systemadminsRouter = require('./routes/systemadminroutes')
 app.use('/systemadmins', systemadminsRouter)
 
+const cartsRouter = require('./routes/cartroutes')
+app.use('/carts', cartsRouter)
 
 app.listen(4000, () => console.log('Server started on port 4000..'))
 

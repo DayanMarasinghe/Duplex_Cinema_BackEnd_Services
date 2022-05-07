@@ -1,6 +1,10 @@
 const mongoose = require('mongoose')
 
 const cartSchema = new mongoose.Schema({
+    userID:{
+        type: String,
+        required: true
+    },
     moviename:{
         type: String,
         required: true
@@ -21,7 +25,7 @@ const cartSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    tiime:{
+    time:{
         type: String,
         required: true
     }
