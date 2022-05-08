@@ -52,7 +52,6 @@ router.post('/', async(req, res) => {
         description: req.body.description,
         theme: req.body.theme,
         director: req.body.director,
-        actors: req.body.actors,
         imdb: req.body.imdb
     })
 
@@ -80,9 +79,6 @@ router.patch('/:id', getMovie, async(req, res) => {
     }
     if (req.body.director != null) {
         res.movie.director = req.body.director
-    }
-    if (req.body.actors != null) {
-        res.movie.actors = req.body.actors
     }
     if (req.body.imdb != null) {
         res.movie.imdb = req.body.imdb
@@ -119,7 +115,6 @@ router.put('/:id', getMovie, async(req, res) => {
         description: req.body.description,
         theme: req.body.theme,
         director: req.body.director,
-        actors: req.body.actors,
         imdb: req.body.imdb
     })
 
@@ -192,9 +187,6 @@ router.put('/updatemoviebyname/:moviename', async (req, res) => {
             }
             if (req.body.director != null) {
                 res.movie.director = req.body.director
-            }
-            if (req.body.actors != null) {
-                res.movie.actors = req.body.actors
             }
             if (req.body.imdb != null) {
                 res.movie.imdb = req.body.imdb
