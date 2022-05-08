@@ -17,10 +17,6 @@ const movieSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    actors:{
-        type:Object,
-        required:true
-    },
     imdb:{
         type: String,
         required: true
