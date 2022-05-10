@@ -11,8 +11,7 @@ router.post('/' , async(req, res) =>{
         moviename: req.body.moviename,
         theater: req.body.theater,
         date: req.body.date,
-        showtime: req.body.showtime,
-        bookedSeats: req.body.bookedSeats
+        showtime: req.body.showtime
     })
 
     try{
@@ -37,6 +36,18 @@ router.get('/:moviename', async(req, res) => {
         }
     } catch (error) {
         res.status(500).json({message: err.message})
+    }
+})
+
+/**
+ * @router - get all the movieshow times
+ */
+router.get('/', async (req, res) => {
+    try {
+        const showtimes = await MovieShowTime.find()
+        res.json(showtimes)
+    } catch (err) {
+        res.status(500).json({ message: err.message })
     }
 })
 

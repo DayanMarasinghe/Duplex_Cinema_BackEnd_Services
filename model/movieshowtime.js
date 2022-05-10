@@ -12,9 +12,6 @@ const movieshowtimeSchema = new mongoose.Schema({
     },
     showtime:{
         type:String
-    },
-    bookedSeats:{
-        type:Object
     }
 
 })
