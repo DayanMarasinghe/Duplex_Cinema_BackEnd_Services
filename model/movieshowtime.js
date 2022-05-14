@@ -12,6 +12,9 @@ const movieshowtimeSchema = new mongoose.Schema({
     },
     showtime:{
         type:String
+    },
+    ticketprice:{
+        type:String,
     }
 
 })
