@@ -11,7 +11,8 @@ router.post('/' , async(req, res) =>{
         moviename: req.body.moviename,
         theater: req.body.theater,
         date: req.body.date,
-        showtime: req.body.showtime
+        showtime: req.body.showtime,
+        ticketprice: req.body.ticketprice
     })
 
     try{
