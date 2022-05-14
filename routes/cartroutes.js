@@ -21,10 +21,10 @@ router.post('/',async(req,res) => {
     }
 })
 
-router.get('/getcart/:userID', async(req, res) => {
+router.get('/getcart/:user', async(req, res) => {
     let cart
     try {
-        cart = await Cart.find({name:req.params.userID})
+        cart = await Cart.find({userID:req.params.user})
         if (cart == "") {
             return res.status(404).json({ message: 'Empty Cart' })
         }else{
@@ -39,11 +39,11 @@ router.get('/getcart/:userID', async(req, res) => {
 router.delete('/deleteitem/:id', async (req, res) => {
     let cart
     try {
-        cart = await Cart.find({ name: req.params.id})
+        cart = await Cart.find({ _id: req.params.id})
         if(cart == ""){
             return res.status(404).json({ message: 'Cart empty' })
         }else{
-            await Cart.findOneAndDelete({ name: req.params.id})
+            await Cart.findByIdAndDelete({ _id: req.params.id})
             res.json({ message: 'Removed item' })
         }
         
