@@ -52,7 +52,8 @@ router.post('/', async(req, res) => {
         description: req.body.description,
         theme: req.body.theme,
         director: req.body.director,
-        imdb: req.body.imdb
+        imdb: req.body.imdb,
+        bannerurl: req.body.bannerurl
     })
 
     try{
@@ -82,6 +83,9 @@ router.patch('/:id', getMovie, async(req, res) => {
     }
     if (req.body.imdb != null) {
         res.movie.imdb = req.body.imdb
+    }
+    if (req.body.bannerurl != null){
+        res.movie.bannerurl = req.body.bannerurl
     }
 
     try{
@@ -115,7 +119,8 @@ router.put('/:id', getMovie, async(req, res) => {
         description: req.body.description,
         theme: req.body.theme,
         director: req.body.director,
-        imdb: req.body.imdb
+        imdb: req.body.imdb,
+        bannerurl: req.body.bannerurl
     })
 
     let movie
@@ -190,6 +195,9 @@ router.put('/updatemoviebyname/:moviename', async (req, res) => {
             }
             if (req.body.imdb != null) {
                 res.movie.imdb = req.body.imdb
+            }
+            if (req.body.bannerurl != null) {
+                res.movie.bannerurl = req.body.bannerurl
             }
 
             const update = {}
