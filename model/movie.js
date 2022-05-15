@@ -20,12 +20,11 @@ const movieSchema = new mongoose.Schema({
     imdb:{
         type: String,
         required: true
+    },
+    bannerurl:{
+        type: String,
+        required: true
     }
-    // img:
-    // {
-    //     data: Buffer,
-    //     contentType: String
-    // }
 
 
 })
