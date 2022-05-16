@@ -124,6 +124,51 @@ router.delete('/deleteAdmin/:adminName', async (req, res) => {
     }
 })
 
+/**
+ * @router - movieadmin sign in
+ */
+router.post('/signin', (req, res) => {
+    let { email, password } = req.body;
+    email = email.trim();
+    password = password.trim();
+
+    //validate user inputs
+    if(email == "" || password == ""){
+        res.json({
+            status: "Failed",
+            message: "Empty inputs"
+        })
+    }
+    else{
+        MovieAdmin.find({email}).then(
+            data => {
+                //check if the DB data is empty
+                if(data.length){
+                    const hashedPW = data[0].password;
+                    //compare the passwords
+                    bcrypt.compare(password, hashedPW).then(
+                        result => {
+                            //check if passwords matches
+                            if(result) {
+                                res.status(201).json(result)
+                            }
+                            else{
+                                res.status(400).json({ message: "invalid password entered" })
+                            }
+                        }
+                    ).catch(err => {
+                        res.status(400).json({ message: err.message })
+                        }
+                    )
+                }else{
+                    res.status(400).json({ message: "Invalid login" })
+                }
+            }
+        ).catch(err => {
+            res.status(400).json({ message: err.message })
+        })
+    }
+})
 
 
 module.exports = router
