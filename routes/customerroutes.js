@@ -18,4 +18,25 @@ router.post('/',async(req,res) => {
     }
 })
 
+router.post('/login',async(req,res) => {
+    let cuspw = req.body.password
+
+    try {
+         Customer.find({username:req.body.username}).then(data => {
+            if(data.length){
+                const dbpw = data[0].password;
+                if(dbpw === cuspw){
+                    res.status(200).json({message: 'validated'})
+                }else{
+                    res.status(400).json({message: 'invalid'})
+                }
+            }
+    })
+
+    } catch (err) {
+        return res.status(500).json({ message: err.message })
+    }
+})
+
+
 module.exports = router
