@@ -25,8 +25,9 @@ router.post('/login',async(req,res) => {
          Customer.find({username:req.body.username}).then(data => {
             if(data.length){
                 const dbpw = data[0].password;
+                const id = data[0]._id;
                 if(dbpw === cuspw){
-                    res.status(200).json({message: 'validated'})
+                    res.status(200).json(id)
                 }else{
                     res.status(400).json({message: 'invalid'})
                 }
