@@ -1,5 +1,5 @@
 require('dotenv').config()
-
+const userRoutes = require('./routes/UserRoutes/userRoutes')
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
@@ -35,7 +35,14 @@ const systemadminsRouter = require('./routes/systemadminroutes')
 app.use('/systemadmins', systemadminsRouter)
 
 const cartsRouter = require('./routes/cartroutes')
+const { notFound, errorHandler } = require('./middlewears/errorMiddlewear')
 app.use('/carts', cartsRouter)
+
+app.use("/api/users", userRoutes)
+
+// Error Handling middlewares
+app.use(notFound);
+app.use(errorHandler);
 
 app.listen(4000, () => console.log('Server started on port 4000..'))
 

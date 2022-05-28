@@ -1,13 +1,12 @@
 const express = require('express')
+const asyncHandler = require('express')
 const router = express.Router()
 const SystemAdmin = require('../model/systemadmin')
 const Movie = require('../model/movie')
-const MovieAdmin = require('../model/movieadmin')
 const bcrypt = require("bcrypt") //password handler
 const JWT = require('jsonwebtoken')
 const passwordReset = require('../model/passwordReset')
 const { check, validationResult } = require('express-validator')
-//const passwordReset = require('../model/passwordReset')
 const { v4: uuidv4 } = require("uuid") //unique string
 const nodemailer = require("nodemailer")
 require("dotenv").config(); //env variables
@@ -27,22 +26,22 @@ let transporter = nodemailer.createTransport({
 /**
  * @router - create system admin login details
  */
-router.post('/', async (req, res) => {
-    bcrypt.hash(req.body.password, 10).then(hash => {
-        const admin = new SystemAdmin({
-            name: req.body.name,
-            email: req.body.email,
-            username: req.body.username,
-            password: hash
-        })
+// router.post('/', async (req, res) => {
+//     bcrypt.hash(req.body.password, 10).then(hash => {
+//         const admin = new SystemAdmin({
+//             name: req.body.name,
+//             email: req.body.email,
+//             username: req.body.username,
+//             password: hash
+//         })
 
-        admin.save().then(user => {
-            console.log(user);
-        })
+//         admin.save().then(user => {
+//             console.log(user);
+//         })
 
-    })
+//     })
 
-})
+// })
 
 
 router.post('/signIn', (req, res) => {
@@ -56,6 +55,8 @@ router.post('/signIn', (req, res) => {
             message: "Empty inputs"
         })
     } else {
+        
+        
         SystemAdmin.find({ email }).then(data => {
             if (data.length) {
                 const hashedPassword = data[0].password;
@@ -68,8 +69,9 @@ router.post('/signIn', (req, res) => {
                         })
                     } else {
                         res.json({
-                            status: "FAILED",
-                            message: "invalid password entered"
+                            // status: "FAILED",
+                            // message: "invalid password entered"
+                            error : "invalid password entered"
                         })
                     }
                 }).catch(err => {
@@ -80,8 +82,7 @@ router.post('/signIn', (req, res) => {
                 })
             } else {
                 res.json({
-                    status: "FAILED",
-                    message: "Invalid login"
+                    error : "invalid login"
                 })
             }
         }).catch(err => {
