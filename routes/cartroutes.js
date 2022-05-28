@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Cart = require('../model/cart')
 
+
 router.post('/',async(req,res) => {
     const cart = new Cart({
         userID: req.body.userID,
@@ -10,7 +11,8 @@ router.post('/',async(req,res) => {
         seat: req.body.seat,
         price: req.body.price,
         date: req.body.date,
-        time: req.body.time
+        time: req.body.time,
+        payment: "Pending"
     })    
 
     try{
@@ -24,7 +26,7 @@ router.post('/',async(req,res) => {
 router.get('/getcart/:user', async(req, res) => {
     let cart
     try {
-        cart = await Cart.find({userID:req.params.user})
+        cart = await Cart.find({userID:req.params.user,payment:"Pending"})
         if (cart == "") {
             return res.status(404).json({ message: 'Empty Cart' })
         }else{

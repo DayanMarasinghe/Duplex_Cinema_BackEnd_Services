@@ -28,6 +28,10 @@ const cartSchema = new mongoose.Schema({
     time:{
         type: String,
         required: true
+    },
+    payment:{
+        type: String,
+        required: true
     }
 })
 
